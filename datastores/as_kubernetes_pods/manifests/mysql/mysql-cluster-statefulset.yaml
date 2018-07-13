@@ -92,7 +92,7 @@ spec:
               name: data
               subPath: "mysql"
         - name: mysql-agent
-          image: quay.io/sysdig/mysql-agent:0.1.0
+          image: quay.io/sysdig/mysql-agent:0.1.1-kops
           args:
             - --v=4
             - --no-kube-client
