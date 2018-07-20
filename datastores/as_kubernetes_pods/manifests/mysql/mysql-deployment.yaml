@@ -1,4 +1,16 @@
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: sysdigcloud-mysql-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: <INSERT_YOUR_STORAGE_CLASS_NAME>
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -101,7 +113,8 @@ spec:
             name: sysdigcloud-mysql-config
         # Uncomment this for emptyDir volumes
         - name: data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: sysdigcloud-mysql-claim
         # Uncomment this for GCE Disk
         # - name: data
         #   gcePersistentDisk:
