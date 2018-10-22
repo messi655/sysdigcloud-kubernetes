@@ -60,7 +60,7 @@ spec:
             - -ecx
             - |
               base=1000
-              index=$(cat /etc/hostname | grep -o '[^-]*$')
+              index=$(echo $HOSTNAME | grep -o '[^-]*$')
 
               /entrypoint.sh --server_id=$(expr $base + $index) \
               --datadir=/var/lib/mysql \
